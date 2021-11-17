@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+
+  web55:
+    image: nginx:1.17
+    expose:
+      - 80
+      - 443
+    volumes:
+      - ~/Sites/docker/nginx-proxy/php-55/php:/var/www/html
+      - ~/Sites/docker/nginx-proxy/php-55/docker/site.conf:/etc/nginx/conf.d/site.conf
+      - ~/Sites/docker/nginx-proxy/ssl:/etc/nginx/certs
+    container_name: host_php55_local_dock
+    environment:
+       VIRTUAL_HOST: "php55.local.dock"
+       VIRTUAL_PROTO: "https"
+       VIRTUAL_PORT: 443
+    depends_on:
+      - php55-fpm
+
+  php55-fpm:
+    image: php:5.5-fpm-alpine 
+    container_name: host_php55_fpm
+    volumes:
+      - ~/Sites/docker/nginx-proxy/php-55/php:/var/www/html
+      - ~/Sites/docker/nginx-proxy/php-55/docker/php-5.5.ini:/usr/local/etc/php/php.ini
+
+networks:
+  default:
+    name: nginx-proxy

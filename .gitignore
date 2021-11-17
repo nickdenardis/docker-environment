@@ -1,0 +1,8 @@
+*.crt
+*.csr
+*.key
+.env
+.DS_Store
+vendor
+node_modules
+error_log

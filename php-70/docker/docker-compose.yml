@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+
+  web70:
+    image: nginx:1.17
+    expose:
+      - 80
+      - 443
+    volumes:
+      - ~/Sites/docker/nginx-proxy/php-70/php:/var/www/html
+      - ~/Sites/docker/nginx-proxy/php-70/docker/site.conf:/etc/nginx/conf.d/site.conf
+      - ~/Sites/docker/nginx-proxy/ssl:/etc/nginx/certs
+    container_name: host_php70_local_dock
+    environment:
+       VIRTUAL_HOST: "php70.local.dock"
+       VIRTUAL_PROTO: "https"
+       VIRTUAL_PORT: 443
+    depends_on:
+      - php70
+
+  php70:
+    image: php:7.0-fpm-alpine
+    container_name: host_php70_fpm
+    volumes:
+      - ~/Sites/docker/nginx-proxy/php-70/php:/var/www/html
+      - ~/Sites/docker/nginx-proxy/php-70/docker/php-7.0.ini:/usr/local/etc/php/php.ini
+
+networks:
+  default:
+    name: nginx-proxy

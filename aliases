@@ -1,0 +1,18 @@
+# Alaises
+
+alias docker-up='docker compose up -d'
+alias docker-rebuild='docker compose up -d --build && docker-compose restart'
+alias docker-down='docker compose down'
+
+alias d:php='docker run --rm -it -v $(pwd):/app -w /app php:cli-alpine php'
+alias d:php81='docker run --rm -it -v $(pwd):/app -w /app php:8.1-rc-cli-alpine php'
+alias d:php80='docker run --rm -it -v $(pwd):/app -w /app php:8.0-cli-alpine php'
+alias d:php74='docker run --rm -it -v $(pwd):/app -w /app php:7.4-cli-alpine php'
+alias d:php55='docker run --rm -it -v $(pwd):/app -w /app php:5.5-cli php'
+
+alias d:composer='docker run --rm -it -v $PWD:/app composer'
+
+alias d:exec='f() { docker exec -it $1 /bin/bash };f'
+alias d:artisan='f() { docker exec -it $1 php artisan $2 };f'
+
+alias d:node='docker run --rm -it -v "$PWD":/usr/src/app -w /usr/src/app node'

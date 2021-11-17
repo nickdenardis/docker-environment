@@ -1,0 +1,6 @@
+# /etc/hosts
+
+127.0.0.1 local.dock
+127.0.0.1 php55.local.dock
+127.0.0.1 php70.local.dock
+127.0.0.1 php80.local.dock

@@ -1,0 +1,43 @@
+version: "3"
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./ssl:/etc/nginx/certs
+
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    restart: always
+
+  db_server:
+    image: mariadb:10.7.1
+    container_name: '${APP_NAME}-db'
+    restart: always
+    ports:
+      - '${DB_PORT}:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASS}'
+      MYSQL_USER: '${MYSQL_USER}'
+      MYSQL_PASSWORD: '${MYSQL_PASS}'
+      MYSQL_DATABASE: '${MYSQL_DB}'
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./mariadb/my.cnf:/etc/mysql/conf.d/my.cnf
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD
+      interval: 5s
+      retries: 5
+
+networks:
+  default:
+      name: nginx-proxy
+
+volumes:
+  db_data:
