@@ -28,10 +28,19 @@ openssl req -new -nodes -newkey rsa:4096 \\n  -keyout local.dock.key -out local.
 
 ## Initial Install
 
+Build the PHP FPM images
+
+`cd ~/Sites/docker/nginx-proxy/`
+`docker build -t php-80-fpm:v1 ./php-80-fpm`
+
 Start the Nginx proxy, MariaDB, Redis and the docker network
 
-`cd ~/Sites/docker/nginx-proxy/docker`  
+`cd ~/Sites/docker/nginx-proxy`  
 `docker compose up -d`
+
+Start the main and sub sites in one command
+
+`docker-compose -f docker-compose.yml -f php-80/docker/docker-compose.yml up -d`
 
 ## Adding additional sites
 

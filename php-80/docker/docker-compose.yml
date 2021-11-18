@@ -20,9 +20,8 @@ services:
       - php80
 
   php80:
+    image: php-80-fpm:v1
     container_name: host_php80_fpm
-    build:
-      context: .
     volumes:
       - ~/Sites/docker/nginx-proxy/php-80/php:/var/www/html
       - ~/Sites/docker/nginx-proxy/php-80/docker/php-8.0.ini:/usr/local/etc/php/php.ini
