@@ -90,3 +90,27 @@ View the sites
 
 `cd ~/Sites/docker/nginx-proxy`  
 `docker compose down`
+
+## Building a new Laravel app
+
+Run the 'composer' container and map the current directory to the `/app` directory where it runs:
+
+`docker run --rm -it -v $PWD:/app composer create-project --prefer-dist laravel/laravel laravelproject`
+
+Update the `.env` file with the database and redis information
+
+```
+DB_HOST=db_tester_2021-db
+DB_PORT=33016
+DB_DATABASE=db_tester_2021
+DB_USERNAME=test_user
+DB_PASSWORD=test_pass
+
+CACHE_DRIVER=redis
+REDIS_HOST=redis
+```
+
+Install the npm packages by using the node image and mapping the current directory to the working directory
+
+`docker run --rm -it -v "$PWD":/usr/src/app -w /usr/src/app node npm install`
+

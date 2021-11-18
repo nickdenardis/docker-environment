@@ -18,15 +18,15 @@ services:
 
   db_server:
     image: mariadb:10.7.1
-    container_name: '${APP_NAME}-db'
+    container_name: '${DB_HOST}'
     restart: always
     ports:
       - '${DB_PORT}:3306'
     environment:
-      MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASS}'
-      MYSQL_USER: '${MYSQL_USER}'
-      MYSQL_PASSWORD: '${MYSQL_PASS}'
-      MYSQL_DATABASE: '${MYSQL_DB}'
+      MYSQL_ROOT_PASSWORD: '${DB_ROOT_PASS}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_DATABASE: '${DB_DATABASE}'
     volumes:
       - db_data:/var/lib/mysql
       - ./mariadb/my.cnf:/etc/mysql/conf.d/my.cnf
