@@ -3,10 +3,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$servername = "db_tester_2021-db";
+$servername = "db_server";
 $username = "test_user";
 $password = "test_pass";
-$db = "db_tester_2021";
+$db = "laravelproject";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);

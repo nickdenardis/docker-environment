@@ -121,3 +121,7 @@ Install the npm packages by using the node image and mapping the current directo
 - `d:artisan cache:clear` Run an artisan command in the container
 - `d:phpunit` Run the PHPUnit tests in the container
 - `d:node npm install` Run node commnds on the directory
+
+## Issues/TODO
+
+- [ ] Dynamic DNS based on the folder name
