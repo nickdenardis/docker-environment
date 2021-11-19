@@ -100,9 +100,9 @@ Run the 'composer' container and map the current directory to the `/app` directo
 Update the `.env` file with the database and redis information
 
 ```
-DB_HOST=db_tester_2021-db
-DB_PORT=33016
-DB_DATABASE=db_tester_2021
+DB_HOST=db_server
+DB_PORT=3306
+DB_DATABASE=laravelproject
 DB_USERNAME=test_user
 DB_PASSWORD=test_pass
 
@@ -114,3 +114,10 @@ Install the npm packages by using the node image and mapping the current directo
 
 `docker run --rm -it -v "$PWD":/usr/src/app -w /usr/src/app node npm install`
 
+## Using the aliases
+
+- `d:exec` Get into a Bash command prompt in the container (debug)
+- `d:composer require laravel/breeze --dev` Run a composer command in the container
+- `d:artisan cache:clear` Run an artisan command in the container
+- `d:phpunit` Run the PHPUnit tests in the container
+- `d:node npm install` Run node commnds on the directory
