@@ -18,7 +18,7 @@ services:
 
   db_server:
     image: mariadb:10.7.1
-    container_name: '${DB_HOST}'
+    container_name: db_server
     restart: always
     ports:
       - '${DB_PORT}:3306'

@@ -59,7 +59,7 @@ Update the `.env` file with the database and redis information from the `nginx c
 ```
 DB_CONNECTION=mysql
 DB_HOST=example_app-db
-DB_PORT=33016
+DB_PORT=3306
 DB_DATABASE=laravel
 DB_USERNAME=root
 DB_PASSWORD=
