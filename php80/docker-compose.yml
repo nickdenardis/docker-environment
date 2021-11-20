@@ -8,8 +8,8 @@ services:
       - 80
       - 443
     volumes:
-      - ~/Sites/docker/nginx-proxy/php-80/php:/var/www/html
-      - ~/Sites/docker/nginx-proxy/php-80/docker/site.conf:/etc/nginx/conf.d/site.conf
+      - ./php:/var/www/html
+      - ./docker/site.conf:/etc/nginx/conf.d/site.conf
       - ~/Sites/docker/nginx-proxy/ssl:/etc/nginx/certs
     container_name: host_php80_local_dock
     environment:
@@ -23,8 +23,8 @@ services:
     image: php-80-fpm:v1
     container_name: host_php80_fpm
     volumes:
-      - ~/Sites/docker/nginx-proxy/php-80/php:/var/www/html
-      - ~/Sites/docker/nginx-proxy/php-80/docker/php-8.0.ini:/usr/local/etc/php/php.ini
+      - ./php:/var/www/html
+      - ./docker/php-8.0.ini:/usr/local/etc/php/php.ini
 
 networks:
   default:

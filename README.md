@@ -32,6 +32,7 @@ Build the PHP FPM images
 
 `cd ~/Sites/docker/nginx-proxy/`
 `docker build -t php-80-fpm:v1 ./php-80-fpm`
+`docker build -t php-73-fpm:v1 ./php-73-fpm`
 
 Start the Nginx proxy, MariaDB, Redis and the docker network
 
@@ -125,3 +126,5 @@ Install the npm packages by using the node image and mapping the current directo
 ## Issues/TODO
 
 - [ ] Dynamic DNS based on the folder name
+- [ ] Use Apache for the webserver at each host instead of Nginx
+- [ ] Move the php.ini files into the built fpm containers instead of per-site

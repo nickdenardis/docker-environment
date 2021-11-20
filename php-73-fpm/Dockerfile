@@ -1,6 +1,6 @@
 # Are there more modules needed? https://github.com/cocoastorm/dockerfiles/blob/master/apache-php-essential/Dockerfile
 
-FROM php:8.0-fpm
+FROM php:7.3-fpm
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \

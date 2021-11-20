@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+
+  web80:
+    image: nginx:1.21-alpine
+    expose:
+      - 80
+      - 443
+    volumes:
+      - ./php:/var/www/html
+      - ./docker/site.conf:/etc/nginx/conf.d/site.conf
+      - ~/Sites/docker/nginx-proxy/ssl:/etc/nginx/certs
+    container_name: host_php73_local_dock
+    environment:
+       VIRTUAL_HOST: "php73.local.dock"
+       VIRTUAL_PROTO: "https"
+       VIRTUAL_PORT: 443
+    depends_on:
+      - php73
+
+  php73:
+    image: php-73-fpm:v1
+    container_name: host_php73_fpm
+    volumes:
+      - ./php:/var/www/html
+      - ./docker/php-7.3.ini:/usr/local/etc/php/php.ini
+
+networks:
+  default:
+    name: nginx-proxy
