@@ -17,13 +17,15 @@ services:
        VIRTUAL_PROTO: "https"
        VIRTUAL_PORT: 443
     depends_on:
-      - php80
+      - host_php80_fpm
 
   php80:
     image: php-80-fpm:v1
     container_name: host_php80_fpm
     volumes:
       - ./php:/var/www/html
+    links:
+      - mailhog
 
 networks:
   default:

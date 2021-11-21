@@ -123,9 +123,19 @@ Install the npm packages by using the node image and mapping the current directo
 - `d:phpunit` Run the PHPUnit tests in the container
 - `d:node npm install` Run node commnds on the directory
 
+## Mailhog
+
+The `php.ini` file specifies how to send `mail()`:
+
+`sendmail_path = "/usr/local/bin/mhsendmail --smtp-addr=mailhog:1025 -f noreply@localhost"`
+
+Viewing the outgoing mail:
+
+- [http://localhost:8025](http://localhost:8025/)
+
 ## TODO
 
 - [ ] Dynamic DNS based on the folder name
 - [ ] [Use Apache for the webserver at each host instead of Nginx](http://www.inanzzz.com/index.php/post/su76/creating-apache-mysql-and-php-fpm-containers-for-a-web-application-with-docker-compose)
 - [x] Move the php.ini files into the built fpm containers instead of per-site
-- [ ] Figure out how to trap outgoing mail with mailtrap
+- [x] [Figure out how to trap outgoing mail with Mailhog](https://nishchay.io/blog/mailhog-installation-on-ubuntu)

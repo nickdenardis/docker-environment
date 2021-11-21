@@ -32,8 +32,15 @@ services:
       - ./mariadb/my.cnf:/etc/mysql/conf.d/my.cnf
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u root --password=$$MYSQL_ROOT_PASSWORD
-      interval: 5s
+      interval: 30s
       retries: 5
+      
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog
+    ports:
+      - 1025:1025
+      - 8025:8025
 
 networks:
   default:
