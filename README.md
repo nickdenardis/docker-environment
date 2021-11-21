@@ -123,8 +123,9 @@ Install the npm packages by using the node image and mapping the current directo
 - `d:phpunit` Run the PHPUnit tests in the container
 - `d:node npm install` Run node commnds on the directory
 
-## Issues/TODO
+## TODO
 
 - [ ] Dynamic DNS based on the folder name
-- [ ] Use Apache for the webserver at each host instead of Nginx
-- [ ] Move the php.ini files into the built fpm containers instead of per-site
+- [ ] [Use Apache for the webserver at each host instead of Nginx](http://www.inanzzz.com/index.php/post/su76/creating-apache-mysql-and-php-fpm-containers-for-a-web-application-with-docker-compose)
+- [x] Move the php.ini files into the built fpm containers instead of per-site
+- [ ] Figure out how to trap outgoing mail with mailtrap

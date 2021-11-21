@@ -24,7 +24,6 @@ services:
     container_name: host_php73_fpm
     volumes:
       - ./php:/var/www/html
-      - ./docker/php-7.3.ini:/usr/local/etc/php/php.ini
 
 networks:
   default:
