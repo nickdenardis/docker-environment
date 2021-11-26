@@ -1,0 +1,22 @@
+version: "3.2"
+
+services:
+  php55:
+    build: './php/'
+    volumes:
+      - ./public/:/var/www/html/
+  apache55:
+    build: './apache/'
+    depends_on:
+      - php55
+    expose:
+      - 80
+    environment:
+       VIRTUAL_HOST: "apache.local.dock"
+    volumes:
+      - ./apache/apache.local.conf:/usr/local/apache2/conf/apache.local.conf
+      - ./public/:/var/www/html/
+
+networks:
+  default:
+      name: nginx-proxy

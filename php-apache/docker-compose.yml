@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+
+  web55:
+    image: httpd:2.4
+    expose:
+      - 80
+      - 443
+    volumes:
+      - ./php:/usr/local/apache2/htdocs/
+      - ./docker/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ~/Sites/docker/nginx-proxy/ssl:/etc/apache2/ssl
+    container_name: host_php55_local_dock
+    environment:
+       VIRTUAL_HOST: "php55.local.dock"
+       #VIRTUAL_PROTO: "https"
+       #VIRTUAL_PORT: 443
+    depends_on:
+      - host_php-apache_fpm
+
+  php55-fpm:
+    image: php:5.5-fpm-alpine 
+    container_name: host_php-apache_fpm
+    volumes:
+      - ./php:/var/www/html
+      - ./docker/php-5.5.ini:/usr/local/etc/php/php.ini
+
+networks:
+  default:
+    name: nginx-proxy
