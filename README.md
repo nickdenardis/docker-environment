@@ -34,6 +34,7 @@ Build the PHP FPM images
 `docker build -t php-80-fpm:v1 ./php-80-fpm`
 `docker build -t php-73-fpm:v1 ./php-73-fpm`
 `docker build -t php-55-fpm:v1 ./php-55-fpm`
+`docker build -t host_apache:v1 ./host_apache`
 
 Start the Nginx proxy, MariaDB, Redis and the docker network
 
@@ -137,7 +138,7 @@ Viewing the outgoing mail:
 ## TODO
 
 - [ ] Dynamic DNS based on the folder name
-- [ ] [Use Apache for the webserver at each host instead of Nginx](http://www.inanzzz.com/index.php/post/su76/creating-apache-mysql-and-php-fpm-containers-for-a-web-application-with-docker-compose) or [this one](https://docs.bitnami.com/tutorials/develop-http-api-php-containers/) or [this one](https://á.se/damp-docker-apache-mariadb-php-fpm/)
+- [ ] [Use Apache for the webserver at each host instead of Nginx](http://www.inanzzz.com/index.php/post/su76/creating-apache-mysql-and-php-fpm-containers-for-a-web-application-with-docker-compose) or [this one](https://docs.bitnami.com/tutorials/develop-http-api-php-containers/) or [this one](https://á.se/damp-docker-apache-mariadb-php-fpm/), ended up using [this one](https://www.cloudreach.com/en/technical-blog/containerize-this-how-to-use-php-apache-mysql-within-docker-containers/)
 - [x] Move the php.ini files into the built fpm containers instead of per-site
 - [x] [Figure out how to trap outgoing mail with Mailhog](https://nishchay.io/blog/mailhog-installation-on-ubuntu)
 - [ ] PHP 5.5 image and perhaps redis in the regular apt-get

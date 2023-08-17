@@ -1,0 +1,11 @@
+{
+    "name": "root/html",
+    "config": {
+        "platform": {
+            "php": "5.5.38"
+        }
+    },
+    "require": {
+        "illuminate/support": "^5.2"
+    }
+}

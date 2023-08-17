@@ -20,3 +20,6 @@ RUN docker-php-ext-install pdo_mysql mysql mbstring exif pcntl bcmath gd
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Copy in the php.ini
+#COPY ./php-5.5.ini /usr/local/etc/php/php.ini

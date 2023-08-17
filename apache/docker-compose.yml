@@ -2,13 +2,15 @@ version: "3.2"
 
 services:
   php55:
-    build: './php/'
+    image: php-55-fpm:v1
+    container_name: host_apache_fpm
     volumes:
       - ./public/:/var/www/html/
   apache55:
-    build: './apache/'
+    image: host_apache:v1
+    container_name: host_apache
     depends_on:
-      - php55
+    - host_apache_fpm
     expose:
       - 80
     environment:
